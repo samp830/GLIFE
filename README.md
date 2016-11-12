@@ -1,3 +1,17 @@
+GIF DIARY
+
+Ever wanted to like rip into some chicken wings?
+
+With this web app, you can!!!
+introducing....
+ning nang nong!!
+
+
+
+
+
+
+
 # Tone Analyzer Node.js Starter Application
 [![Build Status](https://travis-ci.org/watson-developer-cloud/tone-analyzer-nodejs.svg?branch=master)](http://travis-ci.org/watson-developer-cloud/tone-analyzer-nodejs)
 [![codecov.io](https://codecov.io/github/watson-developer-cloud/tone-analyzer-nodejs/coverage.svg?branch=master)](https://codecov.io/github/watson-developer-cloud/tone-analyzer-nodejs?branch=master)
