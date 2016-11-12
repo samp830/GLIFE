@@ -33,7 +33,7 @@ function ready() {
   // CSRF protection
   $.ajaxSetup({
     headers: {
-      'csrf-token': $('meta[name="ct"]').attr('content')
+      //'csrf-token': $('meta[name="ct"]').attr('content')
     }
   });
 
