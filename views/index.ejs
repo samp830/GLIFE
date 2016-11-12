@@ -407,9 +407,9 @@
 
       .month {
     padding: 0% 0%;
-    width: 40%;
+    width: 100%;
     height: 0%;
-    background: #1abc9c;
+    background: green;
 }
 /* Month list */
 .month ul {
@@ -437,7 +437,7 @@
     margin: 0;
     padding: 10px 0;
     background-color:#ddd;
-    width:40%;
+    width:100%;
 }
 .weekdays li {
     display: inline-block;
@@ -450,7 +450,7 @@
     padding: 10px 0;
     background: #eee;
     margin: 0;
-    width: 40%;
+    width: 100%;
     height:67vh;
 }
 .days li {
@@ -469,6 +469,28 @@
     background: #1abc9c;
     color: white !important
 }
+
+#rightside {
+  width: 49vw;
+  height: 72vh;
+  background-color:lightblue;
+}
+
+
+.container{
+    display: flex;
+}
+.fixed{
+    width: 50%;
+}
+.flex-item{
+    flex-grow: 1;
+}
+
+
+
+
+
   </style>
 </head>
 
@@ -524,9 +546,7 @@
 
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script> var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=dc6zaTOxFJmzC&limit=5");
-xhr.done(function(data) { console.log("success got data", data); }); </script>
+
   <script type="text/html" id="emotionBarGraphTemplate">
     <% _.each(items, function(item, key, list) { %>
       <div class="bar-graph--row summary-<%= className %>-graph--row">
@@ -700,13 +720,21 @@ xhr.done(function(data) { console.log("success got data", data); }); </script>
 
 
 
-<div class="month"> 
+
+
+
+
+
+
+
+<div class="container">
+  <div class="fixed">
+    
+
+<div class="month" padding-left="2cm"> 
   <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
-    <li>
-              ---------------            November<br>
-      <span style="font-size:18px">2016</span>
+    <li align = 'center'>
+      November<br>
     </li>
   </ul>
 </div>
@@ -722,39 +750,104 @@ xhr.done(function(data) { console.log("success got data", data); }); </script>
 </ul>
 
 <ul class="days"> 
-  <li>1</li>
-  <li>2</li>
-  <li>3</li>
-  <li>4</li>
-  <li>5</li>
-  <li>6</li>
-  <li>7</li>
-  <li>8</li>
-  <li>9</li>
-  <li>10</li>
-  <li>11</li>
-  <li>12</li>
-  <li>13</li>
-  <li>14</li>
-  <li>15</li>
-  <li>16</li>
-  <li>17</li>
-  <li>18</li>
-  <li>19</li>
-  <li>20</li>
-  <li>21</li>
-  <li>22</li>
-  <li>23</li>
-  <li>24</li>
-  <li>25</li>
-  <li>26</li>
-  <li>27</li>
-  <li>28</li>
-  <li>29</li>
-  <li>30</li>
+  <li id = "d1" class = 'dayz'>1</li>
+  <li id = "d2" class = 'dayz'>2</li>
+  <li id = "d3" class = 'dayz'>3</li>
+  <li id = "d4" class = 'dayz'>4</li>
+  <li id = "d5" class = 'dayz'>5</li>
+  <li id = "d6" class = 'dayz'>6</li>
+  <li id = "d7" class = 'dayz'>7</li>
+  <li id = "d8" class = 'dayz'>8</li>
+  <li id = "d9" class = 'dayz'>9</li>
+  <li id = "d10" class = 'dayz'>10</li>
+  <li id = "d11" class = 'dayz'>11</li>
+  <li id = "d12" class = 'dayz'>12</li>
+  <li id = "d13" class = 'dayz'>13</li>
+  <li id = "d14" class = 'dayz'>14</li>
+  <li id = "d15" class = 'dayz'>15</li>
+  <li id = "d16" class = 'dayz'>16</li>
+  <li id = "d17" class = 'dayz'>17</li>
+  <li id = "d18" class = 'dayz'>18</li>
+  <li id = "d19" class = 'dayz'>19</li>
+  <li id = "d20" class = 'dayz'>20</li>
+  <li id = "d21" class = 'dayz'>21</li>
+  <li id = "d22" class = 'dayz'>22</li>
+  <li id = "d23" class = 'dayz'>23</li>
+  <li id = "d24" class = 'dayz'>24</li>
+  <li id = "d25" class = 'dayz'>25</li>
+  <li id = "d26" class = 'dayz'>26</li>
+  <li id = "d27" class = 'dayz'>27</li>
+  <li id = "d28" class = 'dayz'>28</li>
+  <li id = "d29" class = 'dayz'>29</li>
+  <li id = "d30" class = 'dayz'>30</li>
 </ul>
 
 
+
+
+  </div>
+  <div class="flex-item">
+    
+<div id = "rightside">
+JDSFKLJSFDL
+</div>
+
+
+
+  </div>
+</div>
+
+
+
+
+<script>
+
+
+var className = document.getElementsByClassName("dayz")
+
+
+function dc(){
+  var day = parseInt(this.id.substring(1))
+  var rs = document.getElementById("rightside")
+
+  rs.innerHTML = day.toString()
+
+}
+
+for (var i = 0; i < className.length; i++){
+  className[i].addEventListener('click',dc)
+}
+
+
+
+
+
+</script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script> function getGif(keyword)
+  {
+
+    var lnk="http://api.giphy.com/v1/gifs/search?q="
+    var second="&api_key=dc6zaTOxFJmzC&limit=5"
+    var theUrl=lnk+keyword+second
+    var xhr=$.get(theUrl);
+
+    xhr.done(function(data) { console.log("success got data", data); }); 
+
+}
+getGif("cat")
+var ifrm = document.createElement("iframe");
+        ifrm.setAttribute("src", "//giphy.com/embed/l0HlDTMgflJunbFGo");
+        ifrm.style.width = "480px";
+        ifrm.setAttribute("href", "http://giphy.com/gifs/boopy-l0HlDTMgflJunbFGo")
+        ifrm.style.height = "480px";
+console.log("iframe", ifrm)
+document.body.appendChild(ifrm)
+</script>
 
 
 
