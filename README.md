@@ -1,16 +1,16 @@
 GIF DIARY
 
-Ever wanted to like rip into some chicken wings?
+Ever felt like words can't fully express your feelings?
+Wanted to create diary entries that truly expressed your feelings and emotions?
 
-With this web app, you can!!!
-introducing....
-ning nang nong!!
-
+The GIFalender is here to help!
 
 
 
 
-
+__________________________________________
+OLD STUFF
+__________________________________________
 
 # Tone Analyzer Node.js Starter Application
 [![Build Status](https://travis-ci.org/watson-developer-cloud/tone-analyzer-nodejs.svg?branch=master)](http://travis-ci.org/watson-developer-cloud/tone-analyzer-nodejs)
