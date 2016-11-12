@@ -498,7 +498,8 @@
   <!-- top level heading -->
 
   
-
+<script> //function test(){console.log("Test")} 
+ </script>
   <!-- demo body -->
   <div class="_demo--container">
     <article class="_content base--article">
@@ -511,8 +512,9 @@
           <textarea class="base--textarea input--textarea" rows="7"></textarea>
         </div>
         <div class="input--submit-button-container">
-          <button class="base--button input--submit-button" type="submit">Submit Diary</button>
+          <button onclick="test()" class="base--button input--submit-button" type="submit">Submit Diary</button>
         </div>
+
       </div>
 
       <div class="loading">
@@ -685,6 +687,37 @@
   <script type="text/javascript" src="js/components/App.js"></script>
   <script type="text/javascript" src="js/demo.js"></script>
   <script type="text/javascript">
+    /*console.log("bann");
+    function getGif(keyword)
+  {
+
+    var lnk="http://api.giphy.com/v1/gifs/search?q="
+    var second="&api_key=dc6zaTOxFJmzC&limit=5"
+    var theUrl=lnk+keyword+second
+    var xhr=$.get(theUrl);
+
+    xhr.done(showGif); 
+
+}
+function showGif(data){
+
+  var ifrm = document.createElement("iframe");
+  var gif=data["data"][0]
+  console.log(data)
+  console.log(data["data"][0], "IS DATA??")
+  ifrm.setAttribute("src", gif["embed_url"]);
+        ifrm.width = gif["images"]["downsized_small"]["width"]
+        ifrm.setAttribute("href", gif["url"])
+        ifrm.height = gif["images"]["downsized_small"]["height"]
+        console.log(ifrm)
+        document.body.appendChild(ifrm)
+  
+}
+
+
+    var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
+      getGif(x);
+       console.log("IS X") ;*/
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -695,13 +728,14 @@
   </script>
   <script type="text/javascript">
   $(document).ready(function(){
+    
     $('input[name="document-level"]').prop('checked', false);
     $('input[name="sentence-level"]').prop('checked', false);
 
     $(".input--submit-button, .output--reset-button").click(function() {
       $('input[name="document-level"]').prop('checked', false);
       $('input[name="sentence-level"]').prop('checked', false);
-      });
+      
   //		$("input[name='document-level']").click(function() {
   //      setTimeout(function(){
   //        $('.dcl').hide(0).delay(2000).show(0);
@@ -709,11 +743,13 @@
   //     }, 100);
   //		});
       		$("input[name='sentence-level']").click(function() {
+
           setTimeout(function(){
           $('.scl').hide(0).delay(2000).show(0);
   				$('.sentence-level-thankyou').show(0).delay(2000).hide(0);
         }, 100);
   		});
+  });
   });
   </script>
 
@@ -836,17 +872,41 @@ for (var i = 0; i < className.length; i++){
     var theUrl=lnk+keyword+second
     var xhr=$.get(theUrl);
 
-    xhr.done(function(data) { console.log("success got data", data); }); 
+    xhr.done(showGif); 
 
 }
-getGif("cat")
+function showGif(data){
+
+  var ifrm = document.createElement("iframe");
+  var gif=data["data"][0]
+  console.log(data)
+  console.log(data["data"][0], "IS DATA??")
+  ifrm.setAttribute("src", gif["embed_url"]);
+        ifrm.width = gif["images"]["downsized_small"]["width"]
+        ifrm.setAttribute("href", gif["url"])
+        ifrm.height = gif["images"]["downsized_small"]["height"]
+        console.log(ifrm)
+        document.body.appendChild(ifrm)
+  
+}
+function cheese(){
+getGif("cheese")}
+
+function test(){
+
+
+    var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
+      getGif(x);
+      getGif("dog")
+       console.log("IS X") ;}
+/*
 var ifrm = document.createElement("iframe");
         ifrm.setAttribute("src", "//giphy.com/embed/l0HlDTMgflJunbFGo");
         ifrm.style.width = "480px";
         ifrm.setAttribute("href", "http://giphy.com/gifs/boopy-l0HlDTMgflJunbFGo")
         ifrm.style.height = "480px";
 console.log("iframe", ifrm)
-document.body.appendChild(ifrm)
+document.body.appendChild(ifrm)*/
 </script>
 
 
