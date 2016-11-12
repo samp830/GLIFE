@@ -1,0 +1,59 @@
+{
+  "name": "tone-analyzer-nodejs",
+  "version": "3.1.1",
+  "description": "Web application that uses Tone Analyzer to get the tone from a text message",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/watson-developer-cloud/tone-analyzer-nodejs.git"
+  },
+  "author": "IBM Corp.",
+  "contributors": [
+    {
+      "name": "James Zhang",
+      "email": "jzhang300@us.ibm.com"
+    },
+    {
+      "name": "Eva Xiaohui Luo",
+      "email": "evaluo_xhl@us.ibm.com"
+    },
+    {
+      "name": "German Attanasio Ruiz",
+      "email": "germanatt@us.ibm.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/watson-developer-cloud/tone-analyzer-nodejs/issues"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
+    "lint": "eslint .",
+    "autofix": "eslint --fix .",
+    "codecov": "npm run test && (codecov || true)"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cf-deployment-tracker-client": "0.0.8",
+    "cookie-parser": "^1.4.1",
+    "csurf": "^1.8.3",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.3.4",
+    "errorhandler": "^1.4.1",
+    "express": "^4.12.2",
+    "express-rate-limit": "^2.1.0",
+    "express-secure-only": "^0.2.1",
+    "helmet": "^2.3.0",
+    "watson-developer-cloud": "^1.12.4"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "codecov": "^1.0.1",
+    "eslint": "^2.8.0",
+    "eslint-config-airbnb-es5": "^1.0.9",
+    "eslint-plugin-react": "^5.1.1",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  }
+}
