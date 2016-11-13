@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="css/style.css">
-  <title>GLIFE- GIF Life</title>
+  <title>Gifalendar</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -497,7 +497,7 @@
 
   function drawdraw(i){
 
-    document.getElementById("hist").innerHTML = texthist[i]
+    document.getElementById("hist").innerHTML = "<p align = 'middle'>"+texthist[i]+""
   var ifrm = document.createElement("iframe");
   ifrm.setAttribute("id","ifrms")
   ifrm.style.width = 500+"px";
@@ -595,6 +595,7 @@ document.getElementById("nextbut").addEventListener("click",np)
 </script>
 
 
+<p align = "middle">Your Diary</p>
 <div id = 'hist'></div>
 
 
@@ -861,6 +862,7 @@ function showGif(data){
         ifrm.width = gif["images"]["downsized_small"]["width"]
         ifrm.setAttribute("href", gif["url"])
         ifrm.height = gif["images"]["downsized_small"]["height"]
+        ifrm.style.align = "middle"
         document.getElementById("summary--gif").innerHTML = ""
         document.getElementById("summary--gif").appendChild(ifrm)
   
