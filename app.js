@@ -15,11 +15,11 @@
  */
 
 'use strict';
-
+ var keyword_extractor = require("keyword-extractor");
 var express    = require('express'),
   app          = express(),
   watson       = require('watson-developer-cloud');
-var keyword_extractor = require("keyword-extractor");
+
 // Bootstrap application settings
 require('./config/express')(app);
 
@@ -31,6 +31,19 @@ var toneAnalyzer = watson.tone_analyzer({
   version_date: '2016-05-19',
   version: 'v3'
 });
+app.get('/extractkeywords', function(req, res){
+console.log(req.query.text);
+
+ var extraction_result = keyword_extractor.extract(req.query.text,{
+                                                                language:"english",
+                                                                remove_digits: true,
+                                                                return_changed_case:true,
+                                                                remove_duplicates: false,
+ 
+                                                           });
+ res.json(extraction_result);
+})
+
 
 app.get('/', function(req, res) {
   res.render('index', {
@@ -38,22 +51,7 @@ app.get('/', function(req, res) {
     ga: process.env.GOOGLE_ANALYTICS
   });
 });
-app.get('/hi', function(req, res){
-  console.log(req)
 
-  var extraction_result = keyword_extractor.extract(req.query.text,{
-                                                                language:"english",
-                                                                remove_digits: true,
-                                                                return_changed_case:true,
-                                                                remove_duplicates: false
- 
-                                                           });
-    // run your request.js script
-    // when index.html makes the ajax call to www.yoursite.com/request, this runs
-    // you can also require your request.js as a module (above) and call on that:
-    res.json(extraction_result); // try res.json() if getList() returns an object or array*/
-    //res.send({hi:1})
-});
 app.post('/api/tone', function(req, res, next) {
   toneAnalyzer.tone(req.body, function(err, data) {
     if (err) {
@@ -67,3 +65,4 @@ app.post('/api/tone', function(req, res, next) {
 require('./config/error-handler')(app);
 
 module.exports = app;
+
