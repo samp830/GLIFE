@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="css/style.css">
-  <title>Tone Analyzer</title>
+  <title>Gifalendar</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -490,10 +490,7 @@
 
 
 
-  <script>
-  var realdiary = []
-  //entries like [getGif result, text, emotion sentiment]
-  </script>
+  
 
 
   <script>
@@ -510,14 +507,7 @@
     document.getElementById("giftext").innerHTML = texthist[i]
   var ifrm = document.createElement("iframe");
   var gif=realdiary[i]["data"][0]
-  console.log(realdiary[i])
-  console.log(realdiary[i]["data"][0], "IS DATA??")
-  console.log('yes')
-
-
-  console.log('wank')
-  console.log(realdiary[i]["data"][0].url)
-  console.log('twank')
+  
 
   diarylist.push(realdiary[i]["data"][0].url)
 
@@ -563,13 +553,6 @@
       <div class="error">
         <div class="error--message"></div>
       </div>
-
-
-
-      
-
-
-
 
       <div class="output">
         <div class="summary--row">
@@ -763,37 +746,7 @@ document.getElementById("nextbut").addEventListener("click",np)
   <script type="text/javascript" src="js/components/App.js"></script>
   <script type="text/javascript" src="js/demo.js"></script>
   <script type="text/javascript">
-    /*console.log("bann");
-    function getGif(keyword)
-  {
-
-    var lnk="http://api.giphy.com/v1/gifs/search?q="
-    var second="&api_key=dc6zaTOxFJmzC&limit=5"
-    var theUrl=lnk+keyword+second
-    var xhr=$.get(theUrl);
-
-    xhr.done(showGif); 
-
-}
-function showGif(data){
-
-  var ifrm = document.createElement("iframe");
-  var gif=data["data"][0]
-  console.log(data)
-  console.log(data["data"][0], "IS DATA??")
-  ifrm.setAttribute("src", gif["embed_url"]);
-        ifrm.width = gif["images"]["downsized_small"]["width"]
-        ifrm.setAttribute("href", gif["url"])
-        ifrm.height = gif["images"]["downsized_small"]["height"]
-        console.log(ifrm)
-        document.body.appendChild(ifrm)
-  
-}
-
-
-    var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
-      getGif(x);
-       console.log("IS X") ;*/
+    
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -953,6 +906,7 @@ for (var i = 0; i < className.length; i++){
 
     var lnk="http://api.giphy.com/v1/gifs/search?q="
     var second="&api_key=dc6zaTOxFJmzC&limit=5"
+    console.log(keyword, "is keyword")
     var theUrl=lnk+keyword+second
     var xhr=$.get(theUrl);
 
@@ -961,18 +915,22 @@ for (var i = 0; i < className.length; i++){
 }
 function showGif(data){
 
-  realdiary.push(data)
-
-  var ifrm = document.createElement("iframe");
+  var diaries=""
+  if (readCookie("realdiary")!=null){
+  diaries=readCookie("realdiary")}
+  
   var gif=data["data"][0]
-  console.log(data)
-  console.log(data["data"][0], "IS DATA??")
-  console.log('yes')
-
-
-  console.log('wank')
-  console.log(data["data"][0].url)
-  console.log('twank')
+  var gifarray=[gif["embed_url"],gif["images"]["downsized_small"]["width"],gif["url"],gif["images"]["downsized_small"]["height"]]
+  console.log(gifarray, "is gifarray")
+  var save=gifarray.join(",")
+  console.log(save, "Is save")
+  realdiary.push(gifarray)
+  console.log("realdiary="+diaries+"jkalfajdsfkj"+save, "Saving")
+  document.cookie="realdiary="+diaries+"jkalfajdsfkj"+save
+  var ifrm = document.createElement("iframe");
+  //mark
+  
+//wtf is this
 
   diarylist.push(data["data"][0].url)
 
@@ -981,7 +939,6 @@ function showGif(data){
         ifrm.width = gif["images"]["downsized_small"]["width"]
         ifrm.setAttribute("href", gif["url"])
         ifrm.height = gif["images"]["downsized_small"]["height"]
-        console.log(ifrm)
         document.getElementById("summary--gif").innerHTML = ""
         document.getElementById("summary--gif").appendChild(ifrm)
   
@@ -992,29 +949,55 @@ function getRandomInt(min, max) {
   max = Math.floor(max);    
   return Math.floor(Math.random() * (max - min)) + min;
   }
-    function keywordGif(data){    
-  console.log("data is ",data)   
-  console.log(data.length)    
+  function keywordGif(data){    
+   
   rand=getRandomInt(0,data.length)    
   getGif(data[rand])    
 }
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
 
 var texthist = []
-diaryentries=document.cookie
-texthist=diaryentries.split(";")
+var savedcookies=readCookie("texthist")
+if (savedcookies != null){
+  texthist=savedcookies.split("djkflaasdf")
+
+}
+
+console.log(texthist, "istexthist")
+var realdiary = []
+  var temporarydiary=readCookie("realdiary")
+  if (temporarydiary!=null){
+    realdiary=temporarydiary.split("jkalfajdsfkj")
+}
+console.log(realdiary, "is realdiary")
 
 function test(){
 
 
-
-
-
     var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
     texthist.push(x)
-    document.cookie=x
+    //mark cookie
+    var cookie_text = readCookie("texthist")
+    if (cookie_text==null){
+      print("here")
+      cookie_text=""
+    }
+    var tosave="texthist="+cookie_text+"djkflaasdf"+x
+    
+    document.cookie=tosave
     document.getElementById("giftext").innerHTML = x
-      getGif(x);
-       console.log("IS X") 
+      //getGif(x);
+      
         //$.get('http://www.yoursite.com/request', function(list) {   
                 //$('#response').html(list); // show the list   
        xxx=$.get('http://localhost:3000/extractkeywords?text='+x)    
@@ -1050,7 +1033,7 @@ var diarylist = ["https://media.giphy.com/media/jYAGkoghdmD9S/giphy.gif"]
 <script>
 //NEW STUFF THAT JOSH IS ADDING NEW STUFF THAT JOSH IS ADDING
 //change canvas 
-to div hist
+//to div hist
 </script>
 
 
@@ -1062,16 +1045,20 @@ function loadreel(){
   var totalwidth = 0
   var targetwidth = document.getElementById("hist").width
 
-  for (var i = realdiary.length-1; i >-1; i--){
+  for (var i = realdiary.length-1; i >0; i--){
     var ifrm = document.createElement("iframe");
-    var gif=realdiary[i]["data"][0]
-    ifrm.setAttribute("src", gif["embed_url"]);
-    ifrm.width = gif["images"]["downsized_small"]["width"] = (document.getElementById("hist").height*gif["images"]["downsized_small"]["width"])/gif["images"]["downsized_small"]["height"]
-    ifrm.setAttribute("href", gif["url"])
-    ifrm.height = gif["images"]["downsized_small"]["height"] = document.getElementById("hist").height
+    console.log(realdiary[i])
+    var gif=(realdiary[i]).split(",")
+    
+    ifrm.setAttribute("src", gif[0]); //embed_url
+    //downsized small width
+    ifrm.width = gif[1] = (document.getElementById("hist").height*gif[1])/gif[1]
+    //url
+    ifrm.setAttribute("href", gif[2])
+    //downsized_small height
+    ifrm.height = gif[3] = document.getElementById("hist").height
     totalwidth = totalwidth + parseInt(ifrm.width)
-    console.log(totalwidth)
-    console.log(ifrm.width)
+    
     if (totalwidth > targetwidth){
       break
     }
@@ -1088,60 +1075,6 @@ function loadreel(){
 //NEW STUFF THAT JOSH IS ADDING NEW STUFF THAT JOSH IS ADDING
 </script>
 
-
-<script>
-//THIS IS THE PLACE WHERE WE GON DO GRAPHY SHIT
-</script>
-
-
-<canvas id = "ning"></canvas>
-
-<script>
-
-
-  var canvas = document.getElementById('ning')
-  canvas.width = window.innerWidth*0.9
-  var ww = window.innerWidth
-  canvas.style.width=Math.floor(canvas.width).toString() + "px"
-  canvas.height = window.innerHeight*0.4
-  var wh = window.innerHeight
-  canvas.style.height=Math.floor(canvas.height).toString() + "px"
-  canvas.style.backgroundColor = "rgb(240,210,240)"
-  context = canvas.getContext('2d')
-  //initiation for the canvas
-
-  function drawplot(){
-  
-  canvas.width = canvas.width
-  for (var j = 0; j < 5; j++){
-    for (var i = Math.max(0,emotion.length-8); i < emotion.length-2; i++){
-    //j is what emotion im lookin at
-    //i is what day
-    var normi = i - Math.max(0,emotion.length-8)
-    context.beginPath()
-    context.lineWidth = "1"
-    context.strokeStyle = ["red","purple","green","yellow","blue"][j]
-    context.moveTo(Math.floor(normi*canvas.width/7),Math.floor((1-parseFloat(emotion[i][j]))*canvas.height))
-    context.lineTo(Math.floor((normi+1)*canvas.width/7),Math.floor((1-parseFloat(emotion[i+1][j]))*canvas.height))
-    //context.moveTo(i*5,j*5)
-    //context.lineTo(j*5,i*5)
-    context.stroke()
-  }
-  }
-  }
-
-</script>
-
-
-
-
-
-
-
-
-<script>
-//YA COOL END TRANS
-</script>
 
 </body>
 
