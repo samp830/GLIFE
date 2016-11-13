@@ -492,7 +492,11 @@
     flex-grow: 1;
 }
 
-
+#summary--gif{
+  text-align:center;
+  width:75vw;
+  height:60vh;
+}
 
 
 
@@ -542,6 +546,7 @@
         ifrm.height = gif["images"]["downsized_small"]["height"]
         console.log(ifrm)
         document.getElementById("summary--gif").innerHTML = ""
+        ifrm.style.height = document.getElementById("summary--gif").height
         document.getElementById("summary--gif").appendChild(ifrm)
 
   
