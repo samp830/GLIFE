@@ -1089,6 +1089,60 @@ function loadreel(){
 </script>
 
 
+<script>
+//THIS IS THE PLACE WHERE WE GON DO GRAPHY SHIT
+</script>
+
+
+<canvas id = "ning"></canvas>
+
+<script>
+
+
+  var canvas = document.getElementById('ning')
+  canvas.width = window.innerWidth*0.9
+  var ww = window.innerWidth
+  canvas.style.width=Math.floor(canvas.width).toString() + "px"
+  canvas.height = window.innerHeight*0.4
+  var wh = window.innerHeight
+  canvas.style.height=Math.floor(canvas.height).toString() + "px"
+  canvas.style.backgroundColor = "rgb(240,210,240)"
+  context = canvas.getContext('2d')
+  //initiation for the canvas
+
+  function drawplot(){
+  
+  canvas.width = canvas.width
+  for (var j = 0; j < 5; j++){
+    for (var i = Math.max(0,emotion.length-8); i < emotion.length-2; i++){
+    //j is what emotion im lookin at
+    //i is what day
+    var normi = i - Math.max(0,emotion.length-8)
+    context.beginPath()
+    context.lineWidth = "1"
+    context.strokeStyle = ["red","purple","green","yellow","blue"][j]
+    context.moveTo(Math.floor(normi*canvas.width/7),Math.floor((1-parseFloat(emotion[i][j]))*canvas.height))
+    context.lineTo(Math.floor((normi+1)*canvas.width/7),Math.floor((1-parseFloat(emotion[i+1][j]))*canvas.height))
+    //context.moveTo(i*5,j*5)
+    //context.lineTo(j*5,i*5)
+    context.stroke()
+  }
+  }
+  }
+
+</script>
+
+
+
+
+
+
+
+
+<script>
+//YA COOL END TRANS
+</script>
+
 </body>
 
 </html>
