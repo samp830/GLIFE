@@ -1102,6 +1102,21 @@ function loadreel(){
   function drawplot(){
   
   canvas.width = canvas.width
+  canvas.width = canvas.width
+  context.beginPath()
+  
+    context.strokeStyle="black"
+    context.lineWidth = "3"
+    context.moveTo(0,canvas.height)
+    context.lineTo(0,0)
+    context.stroke()
+    context.beginPath()
+  
+    context.strokeStyle="black"
+    context.lineWidth = "3"
+    context.moveTo(0,canvas.height)
+    context.lineTo(canvas.width,canvas.height)
+    context.stroke()
   for (var j = 0; j < 5; j++){
     for (var i = Math.max(0,emotion.length-8); i < emotion.length-2; i++){
     //j is what emotion im lookin at
