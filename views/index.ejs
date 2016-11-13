@@ -509,7 +509,6 @@
   var gif=realdiary[i]["data"][0]
   
 
-  diarylist.push(realdiary[i]["data"][0].url)
 
 
   ifrm.setAttribute("src", gif["embed_url"]);
@@ -924,7 +923,7 @@ function showGif(data){
   console.log(gifarray, "is gifarray")
   var save=gifarray.join(",")
   console.log(save, "Is save")
-  realdiary.push(gifarray)
+  
   console.log("realdiary="+diaries+"jkalfajdsfkj"+save, "Saving")
   document.cookie="realdiary="+diaries+"jkalfajdsfkj"+save
   var ifrm = document.createElement("iframe");
@@ -932,7 +931,7 @@ function showGif(data){
   
 //wtf is this
 
-  diarylist.push(data["data"][0].url)
+  realdiary.push(save)
 
 
   ifrm.setAttribute("src", gif["embed_url"]);
@@ -989,7 +988,6 @@ function test(){
     //mark cookie
     var cookie_text = readCookie("texthist")
     if (cookie_text==null){
-      print("here")
       cookie_text=""
     }
     var tosave="texthist="+cookie_text+"djkflaasdf"+x
