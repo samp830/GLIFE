@@ -15,7 +15,7 @@
  */
 
 'use strict';
-
+ var keyword_extractor = require("keyword-extractor");
 var express    = require('express'),
   app          = express(),
   watson       = require('watson-developer-cloud');
@@ -31,6 +31,19 @@ var toneAnalyzer = watson.tone_analyzer({
   version_date: '2016-05-19',
   version: 'v3'
 });
+app.get('/extractkeywords', function(req, res){
+console.log(req.query.text);
+
+ var extraction_result = keyword_extractor.extract(req.query.text,{
+                                                                language:"english",
+                                                                remove_digits: true,
+                                                                return_changed_case:true,
+                                                                remove_duplicates: falseplom,
+ 
+                                                           });
+ res.json(extraction_result);
+})
+
 
 app.get('/', function(req, res) {
   res.render('index', {
@@ -52,3 +65,4 @@ app.post('/api/tone', function(req, res, next) {
 require('./config/error-handler')(app);
 
 module.exports = app;
+
