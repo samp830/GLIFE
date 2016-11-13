@@ -505,24 +505,22 @@
 
   function drawdraw(i){
 
-    document.getElementById("summary--gif").innerHTML = ""
 
-    document.getElementById("giftext").innerHTML = texthist[i]
+    document.getElementById("hist").innerHTML = texthist[i]
   var ifrm = document.createElement("iframe");
-  var gif=realdiary[i]["data"][0]
+  var gif=realdiary[i].split(",")
   
 
 
 
-  ifrm.setAttribute("src", gif["embed_url"]);
-        ifrm.width = gif["images"]["downsized_small"]["width"]
-        ifrm.setAttribute("href", gif["url"])
-        ifrm.height = gif["images"]["downsized_small"]["height"]
+  ifrm.setAttribute("src", gif[0]);
+        ifrm.width = gif[1]
+        ifrm.setAttribute("href", gif[2])
+        ifrm.height = gif[3]
         console.log(ifrm)
-        document.getElementById("summary--gif").innerHTML = ""
-        document.getElementById("summary--gif").height = ifrm.height
+        document.getElementById("hist").height = ifrm.height
 
-        document.getElementById("summary--gif").appendChild(ifrm)
+        document.getElementById("hist").appendChild(ifrm)
 
   
 
