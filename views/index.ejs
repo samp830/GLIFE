@@ -620,7 +620,7 @@ document.getElementById("nextbut").addEventListener("click",np)
 </script>
 
 
-<canvas id = 'hist'></canvas>
+<div id = 'hist'></div>
 
 
   <script type="text/html" id="emotionBarGraphTemplate">
@@ -1044,6 +1044,49 @@ var diarylist = ["https://media.giphy.com/media/jYAGkoghdmD9S/giphy.gif"]
 
 </script>
 
+
+
+
+<script>
+//NEW STUFF THAT JOSH IS ADDING NEW STUFF THAT JOSH IS ADDING
+//change canvas 
+to div hist
+</script>
+
+
+<script>
+function loadreel(){
+  //this loads the memory showreel thing
+
+  document.getElementById("hist").innerHTML = ""
+  var totalwidth = 0
+  var targetwidth = document.getElementById("hist").width
+
+  for (var i = realdiary.length-1; i >-1; i--){
+    var ifrm = document.createElement("iframe");
+    var gif=realdiary[i]["data"][0]
+    ifrm.setAttribute("src", gif["embed_url"]);
+    ifrm.width = gif["images"]["downsized_small"]["width"] = (document.getElementById("hist").height*gif["images"]["downsized_small"]["width"])/gif["images"]["downsized_small"]["height"]
+    ifrm.setAttribute("href", gif["url"])
+    ifrm.height = gif["images"]["downsized_small"]["height"] = document.getElementById("hist").height
+    totalwidth = totalwidth + parseInt(ifrm.width)
+    console.log(totalwidth)
+    console.log(ifrm.width)
+    if (totalwidth > targetwidth){
+      break
+    }
+    document.getElementById("hist").appendChild(ifrm)
+  }
+}
+</script>
+
+
+
+
+
+<script>
+//NEW STUFF THAT JOSH IS ADDING NEW STUFF THAT JOSH IS ADDING
+</script>
 
 
 </body>
