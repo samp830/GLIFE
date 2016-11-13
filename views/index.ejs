@@ -10,15 +10,29 @@
   <meta name="ct" content="<$= ct $>">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <style>
-   body {
-    background-color: lightblue;
+     #GLIFE{
+      font-size: 120px;
+      position: relative;
+      top: 20px;
+      color: #fff;
+      text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+  font: 80px 'ChunkFiveRegular';
 }
+     }
+      #ifrms{
+       align: middle;
+        width: 250px;
+        height: 250px;
+      }
       .container {
           width: auto;
           border-top: 1px solid #D6D7D6;
           padding-top: 20px;
           display: none;
       }
+      body {
+    background-color: lightblue;
+}
 
       .left-box {
           float: left;
@@ -285,6 +299,8 @@
       }
 
       .input--API {
+          position: absolute;
+          top: 120px;
           background-color: #323232;
           border: 2px solid #777677;
           margin-top: 0;
@@ -425,29 +441,6 @@
     text-transform: uppercase;
     letter-spacing: 3px;
 }
-/* Previous button inside month header */
-.month .prev {
-    float: left;
-    padding-top: 10px;
-}
-/* Next button */
-.month .next {
-    float: right;
-    padding-top: 10px;
-}
-/* Weekdays (Mon-Sun) */
-.weekdays {
-    margin: 0;
-    padding: 10px 0;
-    background-color:#ddd;
-    width:100%;
-}
-.weekdays li {
-    display: inline-block;
-    width: 13%;
-    color: #666;
-    text-align: center;
-}
 #hist {
   width: 98vw;
   height: 40vh;
@@ -475,22 +468,22 @@
 }
 
 #prevbut{
-  position:absolute;
-  left:80px;
+    position: relative;
+   top: 50px;
+    left: 80px;
 }
-
 #nextbut{
-  position:absolute;
-  right:100px;
+  position: relative;
+  bottom: -48px;
+  left:1220px;
 }
 
-
-  </style>
+</style>
 </head>
 
 <body>
-  <!-- top level heading -->
 
+<p id="GLIFE" align="center"> GLIFE </p>
 
 
   
@@ -505,35 +498,31 @@
 
   function drawdraw(i){
 
-
     document.getElementById("hist").innerHTML = texthist[i]
   var ifrm = document.createElement("iframe");
-  var gif=realdiary[i].split(",")
+  ifrm.setAttribute("id","ifrms")
+var gif=realdiary[i].split(",")
   
 
 
 
-  ifrm.setAttribute("src", gif[0]);
+        ifrm.setAttribute("src", gif[0]);
         ifrm.width = gif[1]
         ifrm.setAttribute("href", gif[2])
         ifrm.height = gif[3]
         console.log(ifrm)
         document.getElementById("hist").height = ifrm.height
-
-        document.getElementById("hist").appendChild(ifrm)
+       document.getElementById("hist").appendChild(ifrm)
 
   
 
   }
   </script>
 
-  <!-- demo body -->
+ <div id=  "textyy"><p id="gtt">  </p> </div>
   <div class="_demo--container">
     <article class="_content base--article">
       <div class="input">
-
-        <input role="radio" class="base--radio input--radio" type="radio" id="input-own-text" name="rb" value="own-text" checked="true">
-        <label class="base--inline-label input--radio-label" for="input-own-text">Your own text</label>
         <hr class="base--hr input--hr">
         <div class="panel">
           <textarea class="base--textarea input--textarea" rows="7"></textarea>
@@ -796,76 +785,6 @@ document.getElementById("nextbut").addEventListener("click",np)
 
 
 
-<div class="container">
-  <div class="fixed">
-    
-
-<div class="month" padding-left="2cm"> 
-  <ul>
-    <li align = 'center'>
-      November<br>
-    </li>
-  </ul>
-</div>
-
-<ul class="weekdays">
-  <li>Mo</li>
-  <li>Tu</li>
-  <li>We</li>
-  <li>Th</li>
-  <li>Fr</li>
-  <li>Sa</li>
-  <li>Su</li>
-</ul>
-
-<ul class="days"> 
-  <li id = "d1" class = 'dayz'>1</li>
-  <li id = "d2" class = 'dayz'>2</li>
-  <li id = "d3" class = 'dayz'>3</li>
-  <li id = "d4" class = 'dayz'>4</li>
-  <li id = "d5" class = 'dayz'>5</li>
-  <li id = "d6" class = 'dayz'>6</li>
-  <li id = "d7" class = 'dayz'>7</li>
-  <li id = "d8" class = 'dayz'>8</li>
-  <li id = "d9" class = 'dayz'>9</li>
-  <li id = "d10" class = 'dayz'>10</li>
-  <li id = "d11" class = 'dayz'>11</li>
-  <li id = "d12" class = 'dayz'>12</li>
-  <li id = "d13" class = 'dayz'>13</li>
-  <li id = "d14" class = 'dayz'>14</li>
-  <li id = "d15" class = 'dayz'>15</li>
-  <li id = "d16" class = 'dayz'>16</li>
-  <li id = "d17" class = 'dayz'>17</li>
-  <li id = "d18" class = 'dayz'>18</li>
-  <li id = "d19" class = 'dayz'>19</li>
-  <li id = "d20" class = 'dayz'>20</li>
-  <li id = "d21" class = 'dayz'>21</li>
-  <li id = "d22" class = 'dayz'>22</li>
-  <li id = "d23" class = 'dayz'>23</li>
-  <li id = "d24" class = 'dayz'>24</li>
-  <li id = "d25" class = 'dayz'>25</li>
-  <li id = "d26" class = 'dayz'>26</li>
-  <li id = "d27" class = 'dayz'>27</li>
-  <li id = "d28" class = 'dayz'>28</li>
-  <li id = "d29" class = 'dayz'>29</li>
-  <li id = "d30" class = 'dayz'>30</li>
-</ul>
-
-
-
-
-  </div>
-  <div class="flex-item">
-    
-<div id = "rightside">
-JDSFKLJSFDL
-</div>
-
-
-
-  </div>
-</div>
-
 
 
 
@@ -1045,7 +964,7 @@ function loadreel(){
   var targetwidth = document.getElementById("hist").width
 
   for (var i = realdiary.length-1; i >0; i--){
-    var ifrm = document.createElement("iframe");
+    var ifrm2 = document.createElement("iframe");
     console.log(realdiary[i])
     var gif=(realdiary[i]).split(",")
     
@@ -1083,7 +1002,6 @@ function loadreel(){
 //THIS IS THE PLACE WHERE WE GON DO GRAPHY SHIT
 </script>
 
-
 <button onclick="drawplot()">Show Emotion Plot</button>
 <canvas id = "ning"></canvas>
 
@@ -1105,20 +1023,20 @@ function loadreel(){
   
   canvas.width = canvas.width
   canvas.width = canvas.width
-  context.beginPath()
-  
-    context.strokeStyle="black"
+      context.beginPath()
+ 
+     context.strokeStyle="black"
     context.lineWidth = "3"
-    context.moveTo(0,canvas.height)
-    context.lineTo(0,0)
-    context.stroke()
-    context.beginPath()
-  
-    context.strokeStyle="black"
-    context.lineWidth = "3"
-    context.moveTo(0,canvas.height)
-    context.lineTo(canvas.width,canvas.height)
-    context.stroke()
+     context.moveTo(0,canvas.height)
+     context.lineTo(0,0)
+     context.stroke()
+     context.beginPath()
+   
+     context.strokeStyle="black"
+     context.lineWidth = "3"
+     context.moveTo(0,canvas.height)
+     context.lineTo(canvas.width,canvas.height)
+     context.stroke()
   for (var j = 0; j < 5; j++){
     for (var i = Math.max(0,emotion.length-8); i < emotion.length-2; i++){
     //j is what emotion im lookin at
