@@ -445,37 +445,6 @@
     color: #666;
     text-align: center;
 }
-/* Days (1-31) */
-.days {
-    padding: 10px 0;
-    background: #eee;
-    margin: 0;
-    width: 100%;
-    height:67vh;
-}
-.days li {
-    list-style-type: none;
-    display: inline-block;
-    text-align: center;
-    margin-bottom: 5px;
-    font-size:12px;
-    color:#777;
-    height:18%;
-    width:13%;
-}
-/* Highlight the "current" day */
-.days li .active {
-    padding: 5px;
-    background: #1abc9c;
-    color: white !important
-}
-
-#rightside {
-  width: 49vw;
-  height: 72vh;
-  background-color:lightblue;
-}
-
 #hist {
   width: 98vw;
   height: 40vh;
@@ -492,8 +461,25 @@
     flex-grow: 1;
 }
 
+#summary--gif{
+  text-align:center;
+  width:75vw;
+}
 
+#giftext{
+  text-align:center;
+  width:75vw;
+}
 
+#prevbut{
+  position:absolute;
+  left:80px;
+}
+
+#nextbut{
+  position:absolute;
+  right:100px;
+}
 
 
   </style>
@@ -521,7 +507,7 @@
 
     document.getElementById("summary--gif").innerHTML = ""
 
-
+    document.getElementById("giftext").innerHTML = texthist[i]
   var ifrm = document.createElement("iframe");
   var gif=realdiary[i]["data"][0]
   console.log(realdiary[i])
@@ -542,6 +528,8 @@
         ifrm.height = gif["images"]["downsized_small"]["height"]
         console.log(ifrm)
         document.getElementById("summary--gif").innerHTML = ""
+        document.getElementById("summary--gif").height = ifrm.height
+
         document.getElementById("summary--gif").appendChild(ifrm)
 
   
@@ -576,11 +564,22 @@
         <div class="error--message"></div>
       </div>
 
+
+
+      
+
+
+
+
       <div class="output">
         <div class="summary--row">
           <div id = "summary--gif" class="summary--gif">
 
           </div>
+
+          <p id = "giftext"></p>
+
+
           <div class="summary--emotion">
             <h5 class="base--h5 summary--header">Emotion</h5>
             <div class="summary-emotion-graph bar-graph"></div>
@@ -599,6 +598,26 @@
 
 
   </div>
+
+<script>
+var currentshown = 0
+</script>
+<div id = 'butthold'>
+<button type="button" id = "prevbut">Previous Diary Entry</button>
+<button type="button" id = "nextbut">Next Diary Entry</button>
+</div>
+<script>
+function cp(){
+  drawdraw(currentshown-1)
+  currentshown = currentshown - 1
+}
+function np(){
+  drawdraw(currentshown+1)
+  currentshown = currentshown + 1
+}
+document.getElementById("prevbut").addEventListener("click",cp)
+document.getElementById("nextbut").addEventListener("click",np)
+</script>
 
 
 <canvas id = 'hist'></canvas>
@@ -793,19 +812,19 @@ function showGif(data){
       $('input[name="document-level"]').prop('checked', false);
       $('input[name="sentence-level"]').prop('checked', false);
       
-  //		$("input[name='document-level']").click(function() {
+  //    $("input[name='document-level']").click(function() {
   //      setTimeout(function(){
   //        $('.dcl').hide(0).delay(2000).show(0);
-  //				$('.document-level-thankyou').show(0).delay(2000).hide(0);
+  //        $('.document-level-thankyou').show(0).delay(2000).hide(0);
   //     }, 100);
-  //		});
-      		$("input[name='sentence-level']").click(function() {
+  //    });
+          $("input[name='sentence-level']").click(function() {
 
           setTimeout(function(){
           $('.scl').hide(0).delay(2000).show(0);
-  				$('.sentence-level-thankyou').show(0).delay(2000).hide(0);
+          $('.sentence-level-thankyou').show(0).delay(2000).hide(0);
         }, 100);
-  		});
+      });
   });
   });
 
@@ -925,7 +944,11 @@ for (var i = 0; i < className.length; i++){
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-  <script> function getGif(keyword)
+  <script> 
+
+
+
+  function getGif(keyword)
   {
 
     var lnk="http://api.giphy.com/v1/gifs/search?q="
@@ -939,7 +962,6 @@ for (var i = 0; i < className.length; i++){
 function showGif(data){
 
   realdiary.push(data)
-
 
   var ifrm = document.createElement("iframe");
   var gif=data["data"][0]
@@ -963,35 +985,37 @@ function showGif(data){
         document.getElementById("summary--gif").innerHTML = ""
         document.getElementById("summary--gif").appendChild(ifrm)
   
+  currentshown = realdiary.length-1  
 }
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+function getRandomInt(min, max) {   
+  min = Math.ceil(min);   
+  max = Math.floor(max);    
   return Math.floor(Math.random() * (max - min)) + min;
+  }
+    function keywordGif(data){    
+  console.log("data is ",data)   
+  console.log(data.length)    
+  rand=getRandomInt(0,data.length)    
+  getGif(rand)    
 }
-function keywordGif(data){
-  console.log("data is ",data)
-  console.log(data.length)
-  rand=getRandomInt(0,data.length)
-  getGif(rand)
 
-}
+var texthist = []
+
 function test(){
-  //MARK BUTTOn
 
-   
-           
-        
+
 
 
 
     var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
+    texthist.push(x)
+    document.getElementById("giftext").innerHTML = x
       getGif(x);
        console.log("IS X") 
-        //$.get('http://www.yoursite.com/request', function(list) {
-                //$('#response').html(list); // show the list
-       xxx=$.get('http://localhost:3000/hi?text='+x)
-    xxx.done(keywordGif)
+        //$.get('http://www.yoursite.com/request', function(list) {   
+                //$('#response').html(list); // show the list   
+       xxx=$.get('http://localhost:3000/hi?text='+x)    
+    xxx.done(keywordGif)    
   }
 
 
