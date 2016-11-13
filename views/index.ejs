@@ -492,11 +492,7 @@
     flex-grow: 1;
 }
 
-#summary--gif{
-  text-align:center;
-  width:75vw;
-  height:60vh;
-}
+
 
 
 
@@ -546,7 +542,6 @@
         ifrm.height = gif["images"]["downsized_small"]["height"]
         console.log(ifrm)
         document.getElementById("summary--gif").innerHTML = ""
-        ifrm.style.height = document.getElementById("summary--gif").height
         document.getElementById("summary--gif").appendChild(ifrm)
 
   
@@ -969,16 +964,35 @@ function showGif(data){
         document.getElementById("summary--gif").appendChild(ifrm)
   
 }
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+function keywordGif(data){
+  console.log("data is ",data)
+  console.log(data.length)
+  rand=getRandomInt(0,data.length)
+  getGif(rand)
 
+}
 function test(){
+  //MARK BUTTOn
 
-
+   
+           
+        
 
 
 
     var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
       getGif(x);
-       console.log("IS X") ;}
+       console.log("IS X") 
+        //$.get('http://www.yoursite.com/request', function(list) {
+                //$('#response').html(list); // show the list
+       xxx=$.get('http://localhost:3000/hi?text='+x)
+    xxx.done(keywordGif)
+  }
 
 
 
