@@ -3,20 +3,21 @@
 
 <head>
   <link rel="stylesheet" href="css/style.css">
-  <title>Gifalendar</title>
+  <title>GLIFE- GIF Life</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="ct" content="<$= ct $>">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <style>
+    
      #GLIFE{
-      font-size: 120px;
+      font-size: 300px;
       position: relative;
-      top: 20px;
+      top: 25px;
       color: #fff;
       text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
-  font: 80px 'ChunkFiveRegular';
+  font: 120px 'ChunkFiveRegular';
 }
      }
       #ifrms{
@@ -484,8 +485,6 @@
 <body>
 
 <p id="GLIFE" align="center"> GLIFE </p>
-
-
   
 
 
@@ -501,6 +500,12 @@
     document.getElementById("hist").innerHTML = texthist[i]
   var ifrm = document.createElement("iframe");
   ifrm.setAttribute("id","ifrms")
+  ifrm.style.width = 500+"px";
+  ifrm.style.height = 300+"px";
+  ifrm.style.position = "absolute";
+  ifrm.style.top="1230x";
+   ifrm.style.left="600px";
+
 var gif=realdiary[i].split(",")
   
 
@@ -518,8 +523,6 @@ var gif=realdiary[i].split(",")
 
   }
   </script>
-
- <div id=  "textyy"><p id="gtt">  </p> </div>
   <div class="_demo--container">
     <article class="_content base--article">
       <div class="input">
@@ -900,10 +903,10 @@ var realdiary = []
 }
 console.log(realdiary, "is realdiary")
 
+
 function test(){
+ var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
 
-
-    var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
     texthist.push(x)
     //mark cookie
     var cookie_text = readCookie("texthist")
@@ -921,6 +924,7 @@ function test(){
        xxx=$.get('http://localhost:3000/extractkeywords?text='+x)    
     xxx.done(keywordGif)    
   }
+
 
 
 
