@@ -44,6 +44,7 @@
     "express-rate-limit": "^2.1.0",
     "express-secure-only": "^0.2.1",
     "helmet": "^2.3.0",
+    "keyword-extractor": "0.0.13",
     "watson-developer-cloud": "^1.12.4"
   },
   "devDependencies": {

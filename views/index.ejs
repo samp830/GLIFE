@@ -1000,6 +1000,8 @@ function getRandomInt(min, max) {
 }
 
 var texthist = []
+diaryentries=document.cookie
+texthist=diaryentries.split(";")
 
 function test(){
 
@@ -1009,12 +1011,13 @@ function test(){
 
     var x=document.getElementsByClassName("base--textarea input--textarea")[0]["value"];
     texthist.push(x)
+    document.cookie=x
     document.getElementById("giftext").innerHTML = x
       getGif(x);
        console.log("IS X") 
         //$.get('http://www.yoursite.com/request', function(list) {   
                 //$('#response').html(list); // show the list   
-       xxx=$.get('http://localhost:3000/hi?text='+x)    
+       xxx=$.get('http://localhost:3000/extractkeywords?text='+x)    
     xxx.done(keywordGif)    
   }
 
